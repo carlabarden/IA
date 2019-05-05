@@ -1,0 +1,28 @@
+###### Implementação do algoritmo A* #########
+# Aluna: Carla de Oliveira Barden
+
+# Para compilar:
+
+$ make 
+
+
+# Para limpar arquivos objeto e executável:
+
+$ make clean
+
+
+
+# Para rodar:
+
+$ ./astar [dimensão do cubo] [percentual de bloqueio] [número de iterações]
+
+
+# Exemplo: 
+
+$ ./astar 10 50 5
+
+# Executa o algoritmo A* num cubo 10x10x10, com 50% de bloqueio (posições geradas aleatoriamente), 5 vezes.
+
+
+
+#Obs: Os arquivos data*.csv foram gerados através do redirecionamento da saída do programa para o arquivo. 
