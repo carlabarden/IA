@@ -6,7 +6,7 @@ LDFLAGS=
 
 RM=rm -f
 
-EXEC=travessia
+EXEC=astar
 
 CSRC=$(wildcard ./src/*.cpp)
 
