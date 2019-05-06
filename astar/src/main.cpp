@@ -8,10 +8,10 @@ typedef struct {
 
 int main(int argc, char* argv[]) {
     srand((unsigned)time(NULL));
-    
+
     struct timespec t_inicio;
     struct timespec t_final;
-    
+
     std::vector<Data> dados;
     int dim_cubo = 0;
     int perc_bloq = 0;
@@ -25,14 +25,15 @@ int main(int argc, char* argv[]) {
     dim_cubo = atoi(argv[1]);
     perc_bloq = atoi(argv[2]);
     num_rod = atoi(argv[3]);
-    
+
     Estados cubo(dim_cubo, perc_bloq);
     int fim = 0;
-    
+
+    //loop responsável pelas iterações (rodadas)
     do{
         //estados iniciais e finais gerados aleatoriamente
         cubo.estados_random();
-        
+
         //tempo de inicio
         clock_gettime(CLOCK_THREAD_CPUTIME_ID, &t_inicio);
         //a*
@@ -40,7 +41,7 @@ int main(int argc, char* argv[]) {
         bool caminho = cubo.astar();
         //tempo de fim
         clock_gettime(CLOCK_THREAD_CPUTIME_ID, &t_final);
-        
+
         //salvando o tempo e a distancia
         if(caminho){
             Data aux;
@@ -48,12 +49,12 @@ int main(int argc, char* argv[]) {
             aux.tempo = t_final.tv_nsec  - t_inicio.tv_nsec;
             dados.push_back(aux);
         }
-            
+
         fim++;
-        //printf("%d\n",fim);
+
     }while(fim < num_rod);
 
-    //imprimindo na tela para redirecionar para arquivo
+    //imprimindo na tela -- para redirecionar para arquivo
     printf(" G (u) ; Tempo (ns) ; \n");
     for (unsigned i = 0; i < dados.size(); i++){
         printf("%.0f;    %2.Lf;\n", dados.at(i).distancia, dados.at(i).tempo);
